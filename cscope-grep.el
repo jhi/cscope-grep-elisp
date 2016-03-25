@@ -145,7 +145,9 @@
                           ;; to the buffer at the moment of generating
                           ;; the cscope buffer, not when the match
                           ;; lines are accessed.
-                          (concat cscope-grep-index-directory filename)
+                          (if (file-name-absolute-p filename)
+                              filename
+                            (concat cscope-grep-index-directory filename))
 			  line
 			  scope
 			  rest)))))
